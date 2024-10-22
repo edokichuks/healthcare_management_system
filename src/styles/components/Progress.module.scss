@@ -1,0 +1,65 @@
+@use '/src/styles/main.scss' as *;
+
+.dSidebar {
+    height: auto;
+    // height: toRem(822);
+    width: toRem(259);
+    //add 91 later
+    background-color: #333333;
+
+
+    &__storage {
+        min-height: toRem(70);
+        max-width: toRem(259);
+        width: 100%;
+        background-color: #333333;
+        justify-self: flex-end;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: toRem(15);
+        gap: toRem(10);
+    
+        &__progressBar {
+          height: toRem(8);
+          background-color: #ffffff;
+          transition: width 0.5s ease-in-out;
+          border-radius: toRem(4);
+    
+          &__wrapper {
+            width: 100%;
+            overflow: hidden;
+            background-color: #cfcfcf;
+            border-radius: toRem(25);
+            height: toRem(8);
+          }
+        }
+    
+        &__details {
+          display: flex;
+          justify-content: space-between;
+    
+          &__data {
+            font-family: $roboto;
+            font-size: toRem(14);
+            font-weight: 400;
+            line-height: toRem(16.41);
+            color: #ffffff;
+          }
+    
+          &__link {
+            font-family: $roboto;
+            font-size: toRem(14);
+            font-weight: 400;
+            line-height: toRem(16.41);
+            color: #ffffff;
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+}

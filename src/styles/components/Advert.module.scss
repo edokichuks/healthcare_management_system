@@ -1,0 +1,103 @@
+@use '/src/styles/main.scss' as *;
+
+.cont {
+    // @include flex(center, center, 0);
+    @include flex_col(toRem10);
+    // align-content: center;
+    // justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-top: toRem(44);
+    // margin-bottom: toRem(37);
+        &__image {
+            // margin: auto auto;
+            position: relative;
+
+            svg {
+                
+            // width: auto;
+            width: toRem(1081);
+            height: toRem(300);
+            }
+        }
+
+        &__textCont {
+            position: absolute;
+            width: toRem(434);
+            height: toRem(175);
+            bottom: toRem(25);
+            left: toRem(25);
+            // border: 1px solid red;
+            background-color: #FFFFFFE5;
+            opacity: 90%;
+            border-radius: toRem(20);
+            padding: toRem(26) toRem(33);
+
+            &__fashion {
+                font-family: $nunito;
+                font-weight: 700;
+                font-size: toRem(14);
+                line-height: toRem(19.1);
+                color: #333333;
+                margin-bottom: toRem(6);
+            }
+
+            &__create {
+                font-family: $comfortaa;
+                font-weight: 700;
+                font-size: toRem(25);
+                color: #333333;
+                margin-bottom: toRem(19);
+            }
+
+            &__try {
+                @include flex(start, center, toRem(19));
+                width: toRem(142);
+                height: toRem(50);
+                background-color: #333333;
+                color: #FFFFFF;
+                padding: 0 toRem(16);
+                border-radius: toRem(10);
+                opacity: 1; /* Element is fully visible initially */
+                transition: opacity 3s ease-out;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 50%; /* Element will dissolve (fade out) when hovered */
+                  }
+
+                svg {
+                    width: toRem(24);
+                    height: toRem(24);
+                }
+
+                &__tryNow {
+                    font-family: $nunito;
+                    font-size: toRem(14);
+                    font-weight: 700;
+                    line-height: toRem(19.1);
+                }
+
+            }
+        }
+
+        &__carousel {
+            @include flex(center, center, toRem(17));
+            margin-top: toRem(11);
+            &__prev,
+            &__present,
+            &__next {
+                width: toRem(15);
+                height: toRem(15);
+                background-color: gray;
+                border-radius: 50%;
+            }
+
+            &__dark {
+                width: toRem(15);
+                height: toRem(15);
+                background-color: #333333;
+                border-radius: 50%;
+            }
+        }
+    }

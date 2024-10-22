@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+$font-mkhai: 'MKhai2 HK Black', sans-serif;
+$dm-sans: 'DM Sans', serif;
+$comfortaa: 'Comfortaa', sans-serif;
+$nunito: 'Nunito', sans-serif;
+$roboto: 'Roboto', sans-serif;
+
+$secondary: #f3ebe2;
+$secondary-orange: #fea621;
+$primary-orange: #fe330a;
+$primary-green: #40A629;
+$off-white: #F9F7F7;
+$secondary-green: #80c41c;
+$col-milch: #fbf8f4;
+$col-cream: #e7d7c5;
+$dark-brown: #4d3d30;
+$primary-text: #2b2b2b;
+$heading-text: #120d07;
+$third: #594024;
+$linkout: #a37642;
+$col-white: #ffffff;
+$input-text-1: #5d4949;
+
+$primary-brown: #efeae6;
+$secondary-brown: #2C2323;
+$primary-black: rgba(32, 30, 29, 1);
+$secondary-black: #000000;
+
+%mg_au {
+  margin: 0 auto;
+}
+%ta_center {
+  text-align: center;
+}
+
+.offset{
+  padding-top: toRem(120);
+  margin-top: toRem(-120);
+}

@@ -1,0 +1,27 @@
+@use '/src/styles/main.scss' as *;
+.cont {
+    display: grid;
+    // grid-template-columns: toRem(512) toRem(206) toRem(90) 1fr;
+    grid-template-rows: auto;
+    // margin: toRem(30) toRem(40);
+    margin-top: toRem(20);
+
+    &__layout {
+        display: grid;
+        grid-template-columns: toRem(513) toRem(206) toRem(90) 1fr;
+        // grid-template-rows: auto;
+        // border-bottom: toRem(2) solid #B3B3B3;
+        padding: toRem(16) toRem(10);
+        // width: 100%;
+        font-family: $nunito;
+        font-size: toRem(14);
+        font-weight: 700;
+        line-height: toRem(19);
+        color: #333333;
+        margin: 0 toRem(40);
+    }
+
+    &__line {
+        border-bottom: toRem(2) solid #B3B3B3;
+    }
+}

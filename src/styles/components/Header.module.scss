@@ -1,0 +1,137 @@
+@use '/src/styles/main.scss' as *;
+
+.header {
+    height: toRem(98);
+    @include flex(between, center, toRem(750));
+    margin: auto toRem(25) auto toRem(25);
+
+    &__inner {
+        // margin: auto toRem(25) auto toRem(25);
+
+        &__layout1 {
+            @include flex(center, center, toRem(35));
+            font-size: toRem(25);
+            
+    
+            // &__image-cont {
+            //     @include flex(center, center, 0);
+            // }
+    
+            &__image {
+                @include flex(between, center, 0);
+                // padding-left: toRem(25);
+
+                &__map {
+                    width: toRem(90);
+                    height: toRem(90);
+                }
+            }
+
+            
+
+            &__text {
+                font-weight: 700;
+                line-height: toRem(28);
+                font-family: $comfortaa;
+
+                &__creative {
+                    color: #333333;
+                }
+
+                &__toolbox {
+                    color: #F2492A;
+                    
+                }
+            }
+        }
+    
+        &__layout2 {
+            @include flex(between, center, toRem(16));
+            
+    
+            &__image1 {
+                @include flex(center, center, toRem(13));
+                border: 1px solid #B3B3B3;
+                padding: toRem(11);
+                width: toRem(86);
+                height: toRem(54);
+                border-radius: toRem(7);
+                position: relative;
+                
+                &__dot {
+                    position: absolute;
+                    top: toRem(5);
+                    left: toRem(5);
+                    background-color: #F2492A;
+                    border-radius: 50%;
+                    width: toRem(10);
+                    height: toRem(10);
+                }
+
+                &__bell {
+                    width: toRem(31);
+                    height: toRem(31);
+                    // padding: toRem(5)
+                }
+
+                &__arrow {
+                    width: toRem(16);
+                    height: toRem(9);
+                    // padding: toRem(5)
+                }
+            }
+
+            &__image2 {
+                @include flex(center, center, toRem(14));
+                border: 1px solid #B3B3B3;
+                padding: toRem(11);
+                width: toRem(91);
+                height: toRem(54);
+                border-radius: toRem(7);
+
+                &__cont {
+                    @include flex(between, center, toRem(5));
+
+                    &__coin {
+                        width: toRem(17);
+                        height: toRem(17);
+                    }
+    
+                    &__number {
+                        font-size: toRem(22);
+                        font-weight: 900;
+                        font-family: $nunito;
+                        color: #333333;
+                    }
+                }
+
+                &__plus {
+                    width: toRem(17);
+                    height: toRem(17);
+                }
+            }
+
+            &__image3 {
+                @include flex(center, center, toRem(20));
+                border: 1px solid #B3B3B3;
+                padding: toRem(11);
+                width: toRem(102);
+                height: toRem(54);
+                border-radius: toRem(7);
+
+                &__user {
+                    width: toRem(43);
+                    height: toRem(43);
+                }
+
+                &__arrow {
+                    width: toRem(16);
+                    height: toRem(9);
+                }
+            }
+            
+        }
+    }
+
+
+}

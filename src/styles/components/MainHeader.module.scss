@@ -1,0 +1,72 @@
+@use '/src/styles/main.scss' as *;
+
+.cont {
+    @include flex(space-between, center, toRem(20));
+
+    &__container {
+        position: relative;
+
+        &__input {
+            width: toRem(337);
+            height: toRem(50);
+            font-size: toRem(14);
+            font-family: $roboto;
+            border: toRem(1) solid #B3B3B3;
+            border-radius: toRem(10);
+    
+            &::placeholder {
+                font-size: toRem(14);
+                font-family: $roboto;
+                font-weight: 400;
+                padding-left: toRem(55);
+                color: #333333;
+            }
+        }
+
+        &__searchIcon {
+            position: absolute;
+            top: toRem(13);
+            left: toRem(16);
+            width: toRem(24);
+            height: toRem(24);
+            display: inline;
+
+            svg {
+                width: toRem(24);
+                height: toRem(24);
+            }
+        }
+    }
+
+    &__icons {
+        
+        button {
+            @include flex(center, center, 0);
+            border: toRem(1) solid #B3B3B3;
+            border-radius: toRem(10);
+            width: toRem(50);
+            height: toRem(50);
+            background-color: #FFFFFF;
+            cursor: pointer;
+
+            svg {
+                height: toRem(23);
+                width: toRem(23);
+            }
+        }
+    }
+
+    &__filter {
+        background-color: #FFFFFF;
+        width: toRem(266);
+        height: toRem(50);
+        border: toRem(1) solid #B3B3B3;
+        border-radius: toRem(10);
+
+    }
+
+    &__select {
+        @include flex(center, center, 0);
+        
+    }
+}

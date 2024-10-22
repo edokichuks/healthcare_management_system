@@ -1,0 +1,116 @@
+@use '/src/styles/main.scss' as *;
+
+.layout {
+    @include flex(start, center, toRem(10));
+    margin-top: toRem(15);
+    margin-bottom: toRem(20);
+
+    &__asset {
+        @include flex(start, center, toRem(19));
+        width: toRem(168);
+        height: toRem(50);
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: toRem(14);
+        line-height: toRem(19);
+        border-radius: toRem(10);
+        cursor: pointer;
+        // padding: auto toRem(5);
+        color: #333333;
+        background-color: #FFFFFF;
+        
+
+        svg {
+            width: toRem(30);
+            height: toRem(30);
+            margin-left: toRem(15);
+            // color: #FFFFFF;
+        }
+
+        &__dark {
+            color: #FFFFFF;
+            background-color: #333333;
+        }
+    }
+
+    &__upload {
+        @include flex(start, center, toRem(19));
+        width: toRem(154);
+        height: toRem(50);
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: toRem(14);
+        line-height: toRem(19);
+        border-radius: toRem(10);
+        cursor: pointer;
+        // padding: auto toRem(5);
+        border: toRem(1) solid #B3B3B3;
+        color: #333333;
+        background-color: #FFFFFF;
+
+        svg {
+            width: toRem(30);
+            height: toRem(30);
+            margin-left: toRem(15);
+        }
+
+        &__dark {
+            color: #FFFFFF;
+            background-color: #333333;
+        }
+    }
+
+    &__share {
+        @include flex(start, center, toRem(19));
+        width: toRem(193);
+        height: toRem(50);
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: toRem(14);
+        line-height: toRem(19);
+        border-radius: toRem(10);
+        cursor: pointer;
+        // padding: auto toRem(5);
+        border: toRem(1) solid #B3B3B3;
+        color: #333333;
+        background-color: #FFFFFF;
+
+        svg {
+            width: toRem(27.5);
+            height: toRem(20);
+            margin-left: toRem(15);
+        }
+
+        &__dark {
+            color: #FFFFFF;
+            background-color: #333333;
+        }
+    }
+
+    &__bin {
+        @include flex(start, center, toRem(19));
+        width: toRem(127);
+        height: toRem(50);
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: toRem(14);
+        line-height: toRem(19);
+        border-radius: toRem(10);
+        cursor: pointer;
+        // padding: auto toRem(5);
+        border: toRem(1) solid #B3B3B3;
+        color: #333333;
+        background-color: #FFFFFF;
+
+        svg {
+            width: toRem(25);
+            height: toRem(25);
+            margin-left: toRem(15);
+        }
+
+        &__dark {
+            color: #FFFFFF;
+            background-color: #333333;
+        }
+    }
+}

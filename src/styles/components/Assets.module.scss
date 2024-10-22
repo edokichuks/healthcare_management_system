@@ -1,0 +1,19 @@
+@use '/src/styles/main.scss' as *;
+
+.cont {
+    margin: toRem(60);
+    // padding-bottom: toRem(107);
+    
+    &__all {
+        font-family: $nunito;
+        font-weight: 700;
+        font-size: toRem(20);
+        line-height: toRem(19);
+        color: #333333;
+    }
+
+    &__demo {
+        margin-top: toRem(20);
+        text-align: center;
+    }
+}

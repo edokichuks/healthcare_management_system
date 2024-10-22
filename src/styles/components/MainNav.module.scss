@@ -1,0 +1,23 @@
+
+@use '/src/styles/main.scss' as *;
+
+.nav {
+    @include flex_col(toRem(15));
+    background-color: #fff;
+    // justify-content: center;
+    align-items: start;
+    // margin: 0 auto;
+    // text-align: center;
+    margin-top: toRem(26);
+    font-family: $nunito;
+    font-size: toRem(14);
+    font-weight: 700;
+    line-height: toRem(14);
+
+    &__divider {
+        text-align: center;
+        margin: auto auto;
+        width: toRem(46);
+        border: toRem(2) solid #E4E4E4;
+    }
+}

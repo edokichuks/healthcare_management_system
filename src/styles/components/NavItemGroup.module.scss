@@ -1,0 +1,95 @@
+@use '/src/styles/main.scss' as *;
+
+.boxLight {
+  width: toRem(193);
+  height: toRem(50);
+  border-radius: toRem(10);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  margin: auto auto;
+  border: toRem(1) solid #B3B3B3;
+  
+
+  &__inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        // margin: toRem(10) toRem(15);
+        gap: toRem(19);
+
+        &__textDark {
+            font-size: toRem(14);
+            font-weight: 700;
+            color: #333333;
+            // flex-shrink: 0;
+        }
+
+        &__textLight {
+          font-size: toRem(14);
+          font-weight: 700;
+          color: #FFFFFF;
+          // flex-shrink: 0;
+      }
+    
+        &__image {
+            text-align: center;
+            // border: 1px solid red; 
+            // color: #333333;
+            width: toRem(50);
+        }
+  }
+}
+
+
+.boxDark {
+  width: toRem(193);
+  height: toRem(50);
+  border-radius: toRem(10);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  margin: auto auto;
+  border: toRem(1) solid #B3B3B3;
+  background-color: #333333;
+  
+
+  &__inner {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        // margin: toRem(10) toRem(15);
+        gap: toRem(19);
+
+        &__text {
+          font-size: toRem(14);
+          font-weight: 700;
+          color: #FFFFFF;
+          // flex-shrink: 0;
+      }
+    
+        &__image {
+            text-align: center;
+            // border: 1px solid red; 
+            color: #FFFFFF;
+            width: toRem(50);
+        }
+  }
+}
+
+
+
+//   &.active {
+//     // background: linear-gradient(
+//     //   180deg,
+//     //   $primary-color-200 0%,
+//     //   $neutral-color-700 100%
+//     // );
+//     transform: scale(1.05);
+//   }

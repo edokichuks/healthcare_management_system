@@ -1,0 +1,16 @@
+@use '/src/styles/main.scss' as *;
+
+.sidebar {
+    // @include flex_col(toRem(270));
+    // @include flex_col(toRem(0));
+    @include flex_col(toRem(252));
+    width: toRem(259);
+    // height: 100dvh;
+    // margin: auto auto;
+    text-align: center;
+    align-items: center;
+    // position: relative;
+    // overflow-y: hidden;
+    // background-color: #333333;
+    // border: 10px solid red;
+}

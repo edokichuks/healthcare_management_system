@@ -1,0 +1,109 @@
+@use '/src/styles//main.scss' as *;
+
+.cont {
+    display: grid;
+    // grid-template-columns: toRem(512) toRem(206) toRem(90) 1fr;
+    grid-template-rows: auto;
+    // margin: toRem(30) toRem(40);
+    margin-top: toRem(20);
+
+    &__layout {
+        display: grid;
+        grid-template-columns: toRem(253) toRem(253) toRem(253) toRem(253);
+        row-gap: toRem(30);
+        column-gap: toRem(17);
+        // margin-top: toRem(20);
+        // border: 1px solid blue;
+
+        // background-color: #FFFFFF;
+
+        &__card {
+            height: auto;
+            width: toRem(253);
+            border-radius: toRem(5);
+            background-color: #FFFFFF;
+
+            @include flex_col(0);
+            box-shadow: -1px 2px 5px #f0f0f0B3;
+
+            position: relative;
+
+
+            img {
+                height: toRem(143);
+                width: toRem(241);
+                margin: toRem(6);
+            }
+
+            &__text {
+                // @include flex(start, start, 0)
+                margin: toRem(15);
+                // margin: toRem(15) toRem(15) toRem(0) toRem(15);
+
+                &__A {
+                    &__details {
+                        color: #333333;
+                        font-family: $comfortaa;
+                        font-weight: 700;
+                        font-size: toRem(16);
+                        line-height: toRem(19.84);
+                    }
+
+                    &__modified {
+                        margin: toRem(9) 0;
+                        font-size: toRem(14);
+                        font-family: $nunito;
+                        font-weight: 400;
+                    }
+                }
+
+                &__B {
+                    @include flex(start, start, toRem(10));
+                    flex-wrap: wrap;
+
+
+                     &__fashion, &__collection {
+                        // background-color: #333333;
+                        // color: #FFFFFF;
+                        // padding: toRem(5);
+                        // border-radius: toRem(10);
+
+                        font-size: toRem(12);
+                        font-family: $nunito;
+                        font-weight: 700;
+                        line-height: toRem(16.4);
+                        padding: toRem(2) toRem(18);
+                        margin-bottom: toRem(10);
+                        border: toRem(1) solid #333333;
+                        border-radius: toRem(15);
+                        border: toRem(1) solid #333333;
+                        background-color: #333333;
+                        color: #FFFFFF;
+                     }
+                }
+
+                &__C {
+                    @include flex(start, center, toRem(10));
+
+                    img {
+                        padding: 0;
+                        width: toRem(30);
+                        height: toRem(30);
+                    }
+                }
+            }
+        }
+
+        &__abs {
+            position: absolute;
+            top: toRem(10);
+            right: toRem(10);
+            z-index: 99999;
+
+            img {
+                width: toRem(24);
+                height: toRem(24);
+            }
+        }
+    }
+}

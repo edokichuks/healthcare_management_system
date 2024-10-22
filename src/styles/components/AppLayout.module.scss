@@ -1,0 +1,31 @@
+@use '/src/styles/main.scss' as *;
+
+.layout {
+    display: grid;
+    grid-template-columns: toRem(259) 1fr;
+    grid-template-rows: 1fr;
+    height: 85vh;
+
+
+    &__sidebar {
+      // overflow-y: auto;
+      // max-height: toRem(10000);
+      // max-height: auto;
+    }
+    
+  
+    &__main {
+      background-color: #F4F4F4;
+      overflow-y: scroll;
+      overflow-x: hidden;
+  
+      &__container {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        // gap: 3.2rem;
+        // max-width: toRem(1067);
+        max-width: toRem(1180);
+      }
+    }
+  }

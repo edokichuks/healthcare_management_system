@@ -1,0 +1,48 @@
+@use '/src/styles/main.scss' as *;
+
+.filterButton {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__first {
+    box-sizing: border-box;
+    width: toRem(223);
+    height: toRem(50);
+    background-color: #ffffff;
+    border: toRem(1) solid #b3b3b3;
+    border-radius: toRem(10);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: toRem(17) toRem(19);
+
+    p {
+    //   font-family: $font-roboto;
+      font-family: $roboto;
+      font-size: toRem(14);
+      font-weight: 400;
+      line-height: toRem(16.41);
+      text-align: left;
+    }
+  }
+
+  &__right {
+    width: toRem(43);
+    height: toRem(50);
+    background-color: #ffffff;
+    border-top-right-radius: toRem(10);
+    border-bottom-right-radius: toRem(10);
+    border: toRem(1) solid #b3b3b3;
+    border-left: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__icon {
+      width: toRem(12);
+      height: toRem(7);
+    }
+  }
+}
