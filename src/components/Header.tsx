@@ -1,13 +1,8 @@
-import { HiLogout } from "react-icons/hi";
+
 import styled from "styled-components"
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { HiOutlineBars2, HiOutlineUser } from "react-icons/hi2";
-// import Logout from "../authentication/Logout";
 import Logout from './Logout';
-
-import userIcon from '../assets/headers/userIcon.svg'
-import logo from '../assets/headers/logo.svg';
 
 const StyleHeader = styled.div`
   background-color: var(--color-grey-0);
@@ -59,36 +54,21 @@ const SidebarNav = styled.nav`
   z-index: 998;
 `;
 
+const Name = styled.div`
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+`
+
 
 function Header() {
   const [fake, setFake] = useState();
   const [open, setIsOpen] = useState(false);
 
-  // const updateName = useStore((store)=>store.updateName)
-  // const updateAge = useStore((store)=>store.updateAge)
-  // const updateGender = useStore((store)=>store.updateGender)
-  // const userId = useStore((store)=>store.userId)
-  // const updateUserId = useStore((store)=>store.updateUserId)
-  // const navigate = useNavigate();
-  // const isOpen = useStore((state)=>state.isOpen)
-  // const updateIsOpen = useStore((state)=>state.updateIsOpen)
-  // const updateFakeRender = useStore((state)=>state.updateFakeRender)
-
-
 
 //i believe this is what causes the issue of displaying id even when logged out
   const userIdentity = localStorage.getItem("userIdentity")
 
-  function handleLogout() {
-    // updateName("");
-    // updateAge("");
-    // updateGender("");
-    // updateUserId("")
-    // localStorage.removeItem("userIdentity")
-    // setFake((fake)=>fake+1)
-    // navigate("/", {replace: true})
-    // updateFakeRender()
-  }
 
   const toggleSidebar =  (open) => {
     setIsOpen((open)=>!open);
@@ -98,15 +78,10 @@ function Header() {
 
   return (
     <StyleHeader>
-      {/* <div>{userId? `id: ${userId || userIdentity}` : `${userIdentity || ""}`}</div> */}
       <ToggleButton onClick={toggleSidebar}>
         <HiOutlineBars2 />
       </ToggleButton>
-      {/* <h5><HiOutlineUser /> {userId || userIdentity}</h5> */}
-      {/* <img src={logo} alt="logo" /> */}
-      <h1>iClinic</h1>
-
-      {/* <LogoutButton onClick={handleLogout} userIdentity={userIdentity}> */}
+      <Name>iClinic</Name>
       <Logout />
     </StyleHeader>
   )

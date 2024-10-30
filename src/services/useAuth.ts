@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firestore/firebase";
-import { useId } from "react";
 
 // export const signUp = async (email: string, password: string, role: string): Promise<User> => {
 //     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -21,7 +20,7 @@ import { useId } from "react";
     if (role==="doctor") {
     // await setDoc(doc(db, 'users', user.uid), { email, role });
 
-    let profile = {
+    const profile = {
       email: email,
       role: role,
       experience: "5",
@@ -29,18 +28,18 @@ import { useId } from "react";
 
     }
 
-    let work = {
+    const work = {
       available: "yes",
       booked: "yes",
       pending: "no",
     }
 
-    let patDet = {
+    const patDet = {
       name: "Pat",
       id: "id"
     }
 
-    let doctorInfo = {
+    const doctorInfo = {
       available: true,
       booked: false,
       // pending: false,
@@ -59,7 +58,7 @@ import { useId } from "react";
     if (role==="patient") {
       // await setDoc(doc(db, 'users', user.uid), { email, role });
   
-      let profile = {
+      const profile = {
         email: email,
         role: role,
         bloodGroup: "O",
@@ -67,12 +66,12 @@ import { useId } from "react";
   
       }
   
-      let billing = {
+      const billing = {
         amountPaid: 1400,
         totalAmtPaid: 4500,
       }
   
-      let patDet = {
+      const patDet = {
         name: "Pat",
         id: "id"
       }
@@ -97,7 +96,7 @@ import { useId } from "react";
   
   export const getUserRole = async (uid: string): Promise<string | null | undefined> => {
     // const userDoc = await getDoc(doc(db, 'users', uid));
-    let status = "patients" || "doctors";
+    // let status = "patients" || "doctors";
     // const userDoc = await getDoc(doc(db, 'users', uid));
     const userDoc = await getDoc(doc(db, 'doctors', uid, 'profile', uid));
     const userPat = await getDoc(doc(db, 'patients', uid, 'profile', uid));
@@ -106,11 +105,13 @@ import { useId } from "react";
     if (userDoc.exists()) return userDoc.data().role;
     if (userPat.exists()) return userPat.data().role;
 
-    console.log(userDoc.data().role || userPat.data().role || "ewww");
+    console.log("get user")
+
+    // console.log(userDoc.data().role || userPat.data().role || "ewww");
   }; 
 
 
-  export async function getSelectDoctor(uid: any) {
+  export async function getSelectDoctor(uid: string) {
     // await updateDoc(doc(db, 'doctors', uid, 'work', uid), {
     //   booked: true, 
     //   available: false,

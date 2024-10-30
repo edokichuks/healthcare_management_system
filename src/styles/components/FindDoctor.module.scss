@@ -1,0 +1,20 @@
+@use "/src/styles/main.scss" as *;
+
+.cont {
+    @include flex_col(0px);
+        align-items: center;
+        justify-content: center;
+        width: toRem(900);
+        min-height: toRem(500);
+        height: auto;
+        background-color: #FFFFFF;
+        // margin: auto auto;
+        border-radius: toRem(10);
+        padding-top: toRem(40);
+        overflow-y: scroll;
+}
+
+
+.select {
+    cursor: pointer;
+}

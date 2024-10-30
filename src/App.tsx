@@ -1,10 +1,8 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { Header } from "./components/Header";
 import { AuthProvider } from "./contexts/AuthContext";
 import { PrivateRoute } from "./components/PrivateRoute";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
 import { PageNotFound } from "./pages/PageNotFound";
 import AppLayout from "./components/AppLayout";
 import SignUp from "./pages/SignUp";
@@ -14,6 +12,8 @@ import Profile from "./pages/Profile";
 import FindDoctors from "./pages/FindDoctors";
 import Billings from "./pages/Billings";
 import Prescription from "./pages/Prescription";
+import DoctorDetails from "./pages/DoctorDetails";
+import PatientDetails from "./pages/PatientDetails";
 
 const App: React.FC = () => {
   return (
@@ -34,7 +34,9 @@ const App: React.FC = () => {
                   <Route path="/profile" element={<Profile/>} />
                   <Route path="/doctors" element={<FindDoctors />} />
                   <Route path="/billings" element={<Billings />} /> 
-                  <Route path="/prescription" element={<Prescription />} /> 
+                  <Route path="/prescription" element={<Prescription />} />
+                  <Route path="/doctordetails" element={<DoctorDetails />} />
+                  <Route path="/patientdetails" element={<PatientDetails />} /> 
                   <Route path="*" element={<PageNotFound />} />
                 </Route>
                 {/* <Route path="*" element={<Navigate to="/" replace />} /> */}

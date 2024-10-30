@@ -5,6 +5,9 @@ import {useAuth} from '../hooks/useAuth';
 import { db } from '../firestore/firebase';
 import { getSelectDoctor } from '../services/useAuth';
 import toast from 'react-hot-toast';
+import styles from "../styles/components/FindDoctor.module.scss";
+import Modal from "../components/Modal";
+import ConfirmDelete from "../components/ConfirmDelete";
 
 
 import {
@@ -16,6 +19,7 @@ import {
   TableHeader,
   TableRow,
 } from "../components/ui/table";
+import Symptoms from '@/components/Symptoms';
 // } from "@/components/ui/table"
 
 
@@ -98,8 +102,8 @@ async function handlePickDoctor(uid: any) {
   console.log(doctors);
 
   return (
-    <div>
-      <h1>Patient Dashboard</h1>
+    <div className={styles.cont}>
+      {/* <h1>Patient Dashboard</h1>
       <h2>Select Your Doctor:</h2>
       <select value={selectedDoctor} onChange={e => setSelectedDoctor(e.target.value)}>
         {doctors.map(doctor => (
@@ -113,27 +117,49 @@ async function handlePickDoctor(uid: any) {
       {doctors.map((doctor: any)=>
       <p onClick={()=>handlePickDoctor(doctor.uid)}>
         {doctor.email}
-      </p>)}
+      </p>)} */}
 
-      <Table>
-  <TableCaption>A list of your recent invoices.</TableCaption>
-  <TableHeader>
-    <TableRow>
-      <TableHead className="w-[100px]">Invoice</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Method</TableHead>
-      <TableHead className="text-right">Amount</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    <TableRow>
-      <TableCell className="font-medium">INV001</TableCell>
-      <TableCell>Paid</TableCell>
-      <TableCell>Credit Card</TableCell>
-      <TableCell className="text-right">$250.00</TableCell>
-    </TableRow>
-  </TableBody>
-</Table>
+      <div>
+     { doctors.length>0 && <Table>
+        <TableCaption>See available doctors</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead className="w-[250px]">Email</TableHead>
+            <TableHead>Experience</TableHead>
+            <TableHead>Price</TableHead>
+            <TableHead className="text-right">Available</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {doctors.map(doctor=>
+
+          <Modal>
+          <Modal.Open opens="delete">
+            <TableRow className={styles.select}>
+            {/* <TableRow onClick={()=>handlePickDoctor(doctor.uid)} className={styles.select}> */}
+              <TableCell className="font-medium">Dr. A</TableCell>
+              <TableCell className="font-medium">{doctor.email}</TableCell>
+              <TableCell>6 yrs</TableCell>
+              <TableCell>$100/hr</TableCell>
+              <TableCell className="text-right">Yes</TableCell>
+            </TableRow>
+          </Modal.Open>
+          <Modal.Window name="delete">
+            <Symptoms resourceName="Input your symptoms"
+            onConfirm={()=>alert("ghj")} />
+          </Modal.Window>
+          </Modal>
+
+
+  )
+          }
+        </TableBody>
+      </Table>}
+
+      {doctors.length === 0 && <div>Oops.. No doctor available</div>}
+      </div>
+
 
     </div>
   );

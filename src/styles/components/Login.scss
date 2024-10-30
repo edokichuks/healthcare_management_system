@@ -1,3 +1,4 @@
+@use "/src/styles/main.scss" as *;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
@@ -159,6 +160,7 @@ form.sign-in-form {
 }
 
 .btn {
+  @include flex(center, center, 0px);
   width: 150px;
   background-color: #5995fd;
   border: none;
@@ -168,9 +170,10 @@ form.sign-in-form {
   color: #fff;
   text-transform: uppercase;
   font-weight: 600;
-  margin: 10px 0;
+  margin: 10px auto;
   cursor: pointer;
   transition: 0.5s;
+  text-align: center;
 }
 
 .btn:hover {

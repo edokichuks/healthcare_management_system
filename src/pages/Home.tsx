@@ -1,20 +1,31 @@
 import React from 'react';
 import { useAuth } from '../hooks/useAuth';
-import Spinner from '../components/Spinner';
-import s from '../styles/components/Home.module.scss';
+import styles from "../styles/components/Home.module.scss";
 
 export const Home: React.FC = () => {
   const { user, role } = useAuth();
 
+  console.log(role)
+
+
+  // return (
+  //   <div>
+  //     <h1>Welcome to the Clinic App</h1>
+  //     {user ? (
+  //       <p>You are logged in as a {role}.</p>
+  //     ) : (
+  //       <p>Please log in or register to use the app.</p>
+  //     )}
+  //   </div>
+  // );
 
   return (
-    <div>
-      <h1>Welcome to the Clinic App</h1>
-      {user ? (
-        <p>You are logged in as a {role}.</p>
-      ) : (
-        <p>Please log in or register to use the app.</p>
-      )}
-    </div>
-  );
+  <div className={styles.cont}>
+      <div className={styles.cont__welcome}>Welcome, KIngsley</div>
+      <div className={styles.cont__data}>
+          <div className={styles.cont__data__billing}>fghm</div>
+          <div className={styles.cont__data__diagnosis}>vbnm</div>
+      </div>
+  </div>
+  )
 };

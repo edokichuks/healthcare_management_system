@@ -1,6 +1,41 @@
 @use '/src/styles/main.scss' as *;
 
 .cont {
-    margin: toRem(50) toRem(60);
-    // padding-bottom: toRem(107);
+    // margin: toRem(60);
+    overflow-y: scroll;
+    @include flex_col(toRem(50));
+    justify-content: center;
+    align-items: center;
+
+   &__welcome {
+    @include flex(center, center, toRem(0));
+    width: toRem(900);
+    max-width: toRem(900);
+    height: toRem(110);
+    background-color: #FFFFFF;
+    border-radius: toRem(10);
+    font-family: $comfortaa;
+    font-size: toRem(24);
+    color: $base;
+    font-weight: 800;
+   }
+
+   &__data {
+    @include flex(space-between, center, toRem(40));
+    max-width: toRem(900);
+
+    &__billing {
+        background-color: #FFFFFF;
+        width: toRem(600);
+        height: toRem(300);
+        border-radius: toRem(10);
+    }
+
+    &__diagnosis {
+        background-color: #FFFFFF;
+        width: toRem(260);
+        height: toRem(300);
+        border-radius: toRem(10);
+    }
+   }
 }

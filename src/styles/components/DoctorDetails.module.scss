@@ -1,0 +1,13 @@
+@use "/src/styles/main.scss" as *;
+
+.scrol {
+    @include flex(center, center, toRem(0));
+
+    // margin-top: toRem(400);
+    height: auto;
+    overflow-y: scroll;
+
+    @media (min-width: 1024px) {
+        margin-top: toRem(150);
+    }
+}

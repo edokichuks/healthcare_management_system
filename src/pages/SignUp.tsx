@@ -4,21 +4,28 @@ import { signUp } from '../services/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { ROLES } from '../utils/roles';
+import toast from 'react-hot-toast';
+import SpinnerMini from '@/components/SpinnerMini';
 
 function SignUp() {
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [userName, setUserName] = useState('');
   const [role, setRole] = useState(ROLES.PATIENT);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       await signUp(email, password, role);
       navigate('/home');
     } catch (error) {
       console.error('Error signing up:', error);
+      toast.error("Error: Try again")
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -69,7 +76,9 @@ function SignUp() {
             </select>
 
               {/* <input type="submit" value="Sign Up" className="btn solid" /> */}
-              <button type='submit' className="btn solid">SIgn up</button>
+              <button type='submit' className="btn solid">
+                {isLoading? <SpinnerMini /> : "Sign Up"}
+              </button>
     
               {/* <p className="social-text">Or Sign up with social platforms</p>
               <div className="social-media">

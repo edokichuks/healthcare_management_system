@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
-import { LoginForm } from '../components/LoginForm';
 import { useNavigate } from 'react-router-dom';
 import '../styles/components/Login.scss';
 import log from '../assets/contents/log.svg'
 import { signIn } from '../services/useAuth';
+import toast from 'react-hot-toast';
+import SpinnerMini from '@/components/SpinnerMini';
 
 export const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const data = await signIn(email, password);
       console.log(data);
       navigate('/home');
     } catch (error) {
       console.error('Error signing in:', error);
+      toast.error("Inavlid Credentals")
+    } finally {
+      setIsLoading(false);
     }
   };
   return (
@@ -53,7 +59,9 @@ export const Login: React.FC = () => {
             />
           </div>
           {/* <input type="submit" value="Login" className="btn solid" /> */}
-          <button type="submit" className="btn solid">Sign in</button>
+          <button type="submit" className="btn solid">
+            {isLoading? <SpinnerMini /> : "Sign in"}
+          </button>
 
           {/* <p className="social-text">Or Sign in with social platforms</p>
           <div className="social-media">
@@ -78,7 +86,7 @@ export const Login: React.FC = () => {
 
       <div className="panel left-panel">
           <div className="content">
-              <h3>New here?</h3>
+              <h3>Neww here?</h3>
               <p>Create an account as a medical practioner or a patient.</p>
               <button 
                 className="btn transparent" 
