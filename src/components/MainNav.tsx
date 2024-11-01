@@ -35,7 +35,7 @@ const MainNav = () => {
         {role==="doctor" && <NavItemGroup 
           icon={clockIcon}
           text="Schedule" 
-          toRoute="nnnd" 
+          toRoute="schedule" 
         />}
 
         {role==="doctor" && <NavItemGroup 

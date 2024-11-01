@@ -94,8 +94,8 @@ const FindDoctors = () => {
   };
 
 
-async function handlePickDoctor(uid: any) {
-  await getSelectDoctor(uid);
+async function handlePickDoctor(formData: any) {
+  await getSelectDoctor(formData.docId);
   setRender((render)=>render+1);
   toast.success("Session booked successfully");
 }
@@ -147,7 +147,10 @@ async function handlePickDoctor(uid: any) {
           </Modal.Open>
           <Modal.Window name="delete">
             <Symptoms resourceName="Input your symptoms"
-            onConfirm={()=>alert("ghj")} />
+            // onConfirm={handlePickDoctor}
+            docId={doctor.uid}
+            setRender={setRender}
+            render={render} />
           </Modal.Window>
           </Modal>
 

@@ -14,6 +14,7 @@ import Billings from "./pages/Billings";
 import Prescription from "./pages/Prescription";
 import DoctorDetails from "./pages/DoctorDetails";
 import PatientDetails from "./pages/PatientDetails";
+import Schedule from "./pages/Schedule";
 
 const App: React.FC = () => {
   return (
@@ -32,6 +33,7 @@ const App: React.FC = () => {
                   <Route path="index" element={<Navigate to="/home" replace />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/profile" element={<Profile/>} />
+                  <Route path="/schedule" element={<Schedule/>} />
                   <Route path="/doctors" element={<FindDoctors />} />
                   <Route path="/billings" element={<Billings />} /> 
                   <Route path="/prescription" element={<Prescription />} />
@@ -39,7 +41,6 @@ const App: React.FC = () => {
                   <Route path="/patientdetails" element={<PatientDetails />} /> 
                   <Route path="*" element={<PageNotFound />} />
                 </Route>
-                {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<SignUp />} />
                 {/* <Route path="/register" element={<Register />} /> */}

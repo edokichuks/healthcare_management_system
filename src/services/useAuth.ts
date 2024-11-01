@@ -111,14 +111,26 @@ import { auth, db } from "../firestore/firebase";
   }; 
 
 
-  export async function getSelectDoctor(uid: string) {
-    // await updateDoc(doc(db, 'doctors', uid, 'work', uid), {
-    //   booked: true, 
-    //   available: false,
-    // })
-
+  export async function getSelectDoctor(formData: any) {
+    const uid = formData.docId;
     await updateDoc(doc(db, 'doctorList', uid), {
       available: false,
       booked: true
     })
+    await updateDoc(doc(db, 'doctors', uid, 'work', uid, 'schedule', uid), formData);
+
+    
+  }
+
+  export async function getPatientSympDatails(uid: any) {
+    const patientDetails = await getDoc(doc(db, 'doctors', uid, 'work', uid, "schedule", uid));
+
+    console.log(patientDetails.id);
+    return patientDetails.data();
+  };
+
+  export async function getPrescription(presData: any) {
+    const patId = presData.patID;
+    await updateDoc(doc(db, 'patients', patId, 'work', patId, "availDocs", patId), presData);
+
   }
