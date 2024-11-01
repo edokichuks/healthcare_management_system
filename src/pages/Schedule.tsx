@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import styles from "../styles/components/Schedule.module.scss";
 import { useEffect, useState } from "react";
-import { getPatientSympDatails, getPrescription } from "@/services/useAuth";
+import { getClearPatientSympDatails, getPatientSympDatails, getPrescription } from "@/services/useAuth";
 import { useAuth } from "@/hooks/useAuth";
 import toast from "react-hot-toast";
 import Spinner from "@/components/Spinner";
@@ -12,6 +12,7 @@ import useNavStore from "@/store/NavStore";
 function Schedule() {
     const {user, role} = useAuth();
     const [prescribe, setPrescribe] = useState("");
+    const [illness, setIllness] = useState("");
     const [sympDetails, setSympDetails] = useState<any>();
     const [loadPres, setLoadPres] = useState(false);
 
@@ -43,7 +44,9 @@ function Schedule() {
     async function handlePrescription() {
         setLoadPres(true);
         try {
-            await getPrescription({...sympDetails, prescribe});
+            await getPrescription({...sympDetails, prescribe, illness});
+            await getClearPatientSympDatails(user?.uid);
+
             toast.success("Prescription sent");
             navigate("/home");
             setActiveSideNav("home")
@@ -57,7 +60,7 @@ function Schedule() {
 
     console.log(sympDetails, user);
     if (loadSymp) return <Spinner />;
-    if(!sympDetails) return <div>Nothing to see here</div>
+    if (Object?.keys(sympDetails).length === 0) return <div>You don't have any appointment at the moment</div>
 
     return (
         <div className={styles.cont}>
@@ -86,8 +89,11 @@ function Schedule() {
                 </div>
             </div>
 
-            
-
+            <p>Possible illness</p>
+            <input 
+            value={illness}
+            onChange={(e)=>setIllness(e.target.value)}
+            placeholder=" Malaria, diabetes ..." />
             <p>Prescription</p>
             <textarea 
             value={prescribe}
@@ -101,3 +107,4 @@ function Schedule() {
 }
 
 export default Schedule;
+            

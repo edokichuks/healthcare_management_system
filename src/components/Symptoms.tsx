@@ -157,6 +157,7 @@ function Symptoms({  disabled, onCloseModal, docId, setRender, render } : Sympto
           name="symptoms"
           value={formData.symptoms}
           onChange={handleChange}
+          placeholder=" cough, fever ..."
           required
         />
         

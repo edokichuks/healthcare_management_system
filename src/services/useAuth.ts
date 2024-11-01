@@ -14,7 +14,7 @@ import { auth, db } from "../firestore/firebase";
 //     return userCredential.user;
 //   };
 
-  export const signUp = async (email: string, password: string, role: string): Promise<any> => {
+  export const signUp = async (email: string, password: string, role: string, userName: string): Promise<any> => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     if (role==="doctor") {
@@ -24,6 +24,7 @@ import { auth, db } from "../firestore/firebase";
       email: email,
       role: role,
       experience: "5",
+      userName: userName,
       qulaification: "MBA"
 
     }
@@ -35,14 +36,12 @@ import { auth, db } from "../firestore/firebase";
     }
 
     const patDet = {
-      name: "Pat",
-      id: "id"
     }
 
     const doctorInfo = {
       available: true,
       booked: false,
-      // pending: false,
+      userName: userName,
       email: email,
       role: role,
       experience: "5",
@@ -62,7 +61,8 @@ import { auth, db } from "../firestore/firebase";
         email: email,
         role: role,
         bloodGroup: "O",
-        genotype: "AS"
+        genotype: "AS",
+        userName: userName,
   
       }
   
@@ -72,8 +72,7 @@ import { auth, db } from "../firestore/firebase";
       }
   
       const patDet = {
-        name: "Pat",
-        id: "id"
+        
       }
   
       await setDoc(doc(db, 'patients', user.uid, 'profile', user.uid), profile);
@@ -110,14 +109,33 @@ import { auth, db } from "../firestore/firebase";
     // console.log(userDoc.data().role || userPat.data().role || "ewww");
   }; 
 
+  export const getUserName = async (uid: string): Promise<string | null | undefined> => {
+    // const userDoc = await getDoc(doc(db, 'users', uid));
+    // let status = "patients" || "doctors";
+    // const userDoc = await getDoc(doc(db, 'users', uid));
+    const userDoc = await getDoc(doc(db, 'doctors', uid, 'profile', uid));
+    const userPat = await getDoc(doc(db, 'patients', uid, 'profile', uid));
+    console.log(userDoc.data(), "fish");
+    // return userDoc.exists() ? userDoc.data().role : null;
+    if (userDoc.exists()) return userDoc.data().userName;
+    if (userPat.exists()) return userPat.data().userName;
+
+    console.log("get user")
+
+    // console.log(userDoc.data().role || userPat.data().role || "ewww");
+  };
+
+
+
+
 
   export async function getSelectDoctor(formData: any) {
     const uid = formData.docId;
+    await updateDoc(doc(db, 'doctors', uid, 'work', uid, 'schedule', uid), formData);
     await updateDoc(doc(db, 'doctorList', uid), {
       available: false,
       booked: true
     })
-    await updateDoc(doc(db, 'doctors', uid, 'work', uid, 'schedule', uid), formData);
 
     
   }
@@ -129,8 +147,23 @@ import { auth, db } from "../firestore/firebase";
     return patientDetails.data();
   };
 
+  export async function getClearPatientSympDatails(uid: any) {
+    await setDoc(doc(db, 'doctors', uid, 'work', uid, "schedule", uid), {});
+    await updateDoc(doc(db, 'doctorList', uid), {
+      available: true,
+      booked: false
+    })
+  };
+
   export async function getPrescription(presData: any) {
     const patId = presData.patID;
     await updateDoc(doc(db, 'patients', patId, 'work', patId, "availDocs", patId), presData);
 
   }
+
+  export const getPatientPrescription = async (uid: string | undefined): Promise<string | null | undefined> => {
+    const patPrescribe = await getDoc(doc(db, 'patients', uid, 'work', uid, "availDocs", uid));
+    if (patPrescribe.exists()) return patPrescribe.data();
+  };
+
+  

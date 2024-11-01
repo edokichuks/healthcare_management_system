@@ -125,9 +125,8 @@ async function handlePickDoctor(formData: any) {
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Name</TableHead>
-            <TableHead className="w-[250px]">Email</TableHead>
-            <TableHead>Experience</TableHead>
-            <TableHead>Price</TableHead>
+            <TableHead className="w-[100px]">Experience</TableHead>
+            <TableHead className="w-[180px]">Email</TableHead>
             <TableHead className="text-right">Available</TableHead>
           </TableRow>
         </TableHeader>
@@ -138,10 +137,9 @@ async function handlePickDoctor(formData: any) {
           <Modal.Open opens="delete">
             <TableRow className={styles.select}>
             {/* <TableRow onClick={()=>handlePickDoctor(doctor.uid)} className={styles.select}> */}
-              <TableCell className="font-medium">Dr. A</TableCell>
-              <TableCell className="font-medium">{doctor.email}</TableCell>
+              <TableCell className="font-medium">Dr. {doctor.userName}</TableCell>
               <TableCell>6 yrs</TableCell>
-              <TableCell>$100/hr</TableCell>
+              <TableCell className="font-medium">{doctor.email}</TableCell>
               <TableCell className="text-right">Yes</TableCell>
             </TableRow>
           </Modal.Open>

@@ -3,9 +3,10 @@ import { useAuth } from '../hooks/useAuth';
 import styles from "../styles/components/Home.module.scss";
 
 export const Home: React.FC = () => {
-  const { user, role } = useAuth();
+  const { user, role, userName } = useAuth();
 
-  console.log(role)
+  console.log(userName)
+  
 
 
   // return (
@@ -21,7 +22,7 @@ export const Home: React.FC = () => {
 
   return (
   <div className={styles.cont}>
-      <div className={styles.cont__welcome}>Welcome, KIngsley</div>
+      <div className={styles.cont__welcome}>Welcome, {userName || "Udeh"}</div>
       <div className={styles.cont__data}>
           <div className={styles.cont__data__billing}>fghm</div>
           <div className={styles.cont__data__diagnosis}>vbnm</div>

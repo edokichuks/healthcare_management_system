@@ -1,14 +1,14 @@
 @use "/src/styles/main.scss" as *;
 
 .cont {
-    height: toRem(370);
+    height: toRem(450);
     width: toRem(500);
     background-color: #FFFFFF;
     color: #333333;
     border-radius: toRem(15);
     padding: toRem(30);
 
-    textarea {
+    textarea, input {
         border: 1px solid #333333;
         border-radius: toRem(5);
         outline: none;
@@ -20,11 +20,11 @@
     }
 
     &__spread {
-        @include flex(space-between, center, toRem(20));
+        @include flex(space-between, start, toRem(170));
 
         & div:last-child {
             font-size: toRem(14);
-            align-self: flex-start;
+            color: #333333;
         }
     }
 }

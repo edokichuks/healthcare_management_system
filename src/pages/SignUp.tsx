@@ -19,7 +19,7 @@ function SignUp() {
     e.preventDefault();
     try {
       setIsLoading(true);
-      await signUp(email, password, role);
+      await signUp(email, password, role, userName);
       navigate('/home');
     } catch (error) {
       console.error('Error signing up:', error);
@@ -79,22 +79,7 @@ function SignUp() {
               <button type='submit' className="btn solid">
                 {isLoading? <SpinnerMini /> : "Sign Up"}
               </button>
-    
-              {/* <p className="social-text">Or Sign up with social platforms</p>
-              <div className="social-media">
-                <a href="#" className="social-icon">
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a href="#" className="social-icon">
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a href="#" className="social-icon">
-                  <i className="fab fa-google"></i>
-                </a>
-                <a href="#" className="social-icon">
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </div> */}
+
             </form>
           </div>
         </div>
