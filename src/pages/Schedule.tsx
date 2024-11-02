@@ -10,20 +10,17 @@ import SpinnerMini from "@/components/SpinnerMini";
 import useNavStore from "@/store/NavStore";
 
 function Schedule() {
-    const {user, role} = useAuth();
+    const {user} = useAuth();
     const [prescribe, setPrescribe] = useState("");
     const [illness, setIllness] = useState("");
     const [sympDetails, setSympDetails] = useState<any>();
     const [loadPres, setLoadPres] = useState(false);
-
     const [loadSymp, setloadSymp] = useState(true);
 
     const navigate = useNavigate();
 
-    const activeSideNav = useNavStore((state)=>state.activeSideNav);
     const setActiveSideNav = useNavStore((state)=>state.setActiveSideNav);
     
-
     async function handleSymptoms() {
         try {
             const data = await getPatientSympDatails(user?.uid);
@@ -35,7 +32,6 @@ function Schedule() {
             setloadSymp(false);
         }
     }
-
 
     useEffect(()=> {
         handleSymptoms();
@@ -58,7 +54,6 @@ function Schedule() {
         
     }
 
-    console.log(sympDetails, user);
     if (loadSymp) return <Spinner />;
     if (Object?.keys(sympDetails).length === 0) return <div>You don't have any appointment at the moment</div>
 
