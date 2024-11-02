@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { arrayUnion, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firestore/firebase";
 
 // export const signUp = async (email: string, password: string, role: string): Promise<User> => {
@@ -106,23 +106,18 @@ import { auth, db } from "../firestore/firebase";
 
     console.log("get user")
 
-    // console.log(userDoc.data().role || userPat.data().role || "ewww");
   }; 
 
   export const getUserName = async (uid: string): Promise<string | null | undefined> => {
-    // const userDoc = await getDoc(doc(db, 'users', uid));
-    // let status = "patients" || "doctors";
-    // const userDoc = await getDoc(doc(db, 'users', uid));
+
     const userDoc = await getDoc(doc(db, 'doctors', uid, 'profile', uid));
     const userPat = await getDoc(doc(db, 'patients', uid, 'profile', uid));
     console.log(userDoc.data(), "fish");
-    // return userDoc.exists() ? userDoc.data().role : null;
     if (userDoc.exists()) return userDoc.data().userName;
     if (userPat.exists()) return userPat.data().userName;
 
     console.log("get user")
 
-    // console.log(userDoc.data().role || userPat.data().role || "ewww");
   };
 
 
@@ -131,12 +126,19 @@ import { auth, db } from "../firestore/firebase";
 
   export async function getSelectDoctor(formData: any) {
     const uid = formData.docId;
+    const patID = formData.patID;
+    const id = patID + Math.random()*100;
+
     await updateDoc(doc(db, 'doctors', uid, 'work', uid, 'schedule', uid), formData);
     await updateDoc(doc(db, 'doctorList', uid), {
-      available: false,
+      // available: false,
+      available: true,
       booked: true
     })
-
+    await setDoc(doc(db,"patients", patID, "profile", patID, "health-history", id), formData);
+    await updateDoc(doc(db,"patientList", patID), {
+      health: arrayUnion({...formData})
+    });
     
   }
 
