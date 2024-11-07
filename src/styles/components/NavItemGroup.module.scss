@@ -19,7 +19,7 @@
         justify-content: start;
         align-items: center;
         // margin: toRem(10) toRem(15);
-        gap: toRem(19);
+        gap: toRem(12);
 
         &__textDark {
             font-size: toRem(14);
@@ -40,6 +40,7 @@
             // border: 1px solid red; 
             // color: #333333;
             width: toRem(50);
+            margin-left: toRem(10);
         }
   }
 }
@@ -65,7 +66,7 @@
         justify-content: start;
         align-items: center;
         // margin: toRem(10) toRem(15);
-        gap: toRem(19);
+        gap: toRem(12);
 
         &__text {
           font-size: toRem(14);
@@ -79,6 +80,7 @@
             // border: 1px solid red; 
             color: #FFFFFF;
             width: toRem(50);
+            margin-left: toRem(10);
         }
   }
 }

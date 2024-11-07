@@ -13,6 +13,7 @@ function Schedule() {
     const {user} = useAuth();
     const [prescribe, setPrescribe] = useState("");
     const [illness, setIllness] = useState("");
+    const [price, setPrice] = useState("");
     const [sympDetails, setSympDetails] = useState<any>();
     const [loadPres, setLoadPres] = useState(false);
     const [loadSymp, setloadSymp] = useState(true);
@@ -27,7 +28,7 @@ function Schedule() {
             if (!data) throw new Error;
             setSympDetails(data);
         } catch (err) {
-            toast.error("Error")
+            toast.error("Error");
         } finally {
             setloadSymp(false);
         }
@@ -40,14 +41,15 @@ function Schedule() {
     async function handlePrescription() {
         setLoadPres(true);
         try {
-            await getPrescription({...sympDetails, prescribe, illness});
+            await getPrescription({...sympDetails, prescribe, illness, price, timestamp: new Date()});
             await getClearPatientSympDatails(user?.uid);
 
             toast.success("Prescription sent");
             navigate("/home");
-            setActiveSideNav("home")
-        } catch {
-            toast.error("Network Error. Try again")
+            setActiveSideNav("home");
+        } catch(err) {
+            alert(err.message)
+            toast.error("Network Error. Try again");
         } finally {
             setLoadPres(false);
         }
@@ -89,6 +91,14 @@ function Schedule() {
             value={illness}
             onChange={(e)=>setIllness(e.target.value)}
             placeholder=" Malaria, diabetes ..." />
+
+            <p>Medication bill</p>
+            <input 
+            value={price}
+            type="number"
+            onChange={(e)=>setPrice(e.target.value)}
+            placeholder=" $120" />
+
             <p>Prescription</p>
             <textarea 
             value={prescribe}

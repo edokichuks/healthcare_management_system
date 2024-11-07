@@ -23,7 +23,11 @@ function SignUp() {
       navigate('/home');
     } catch (error) {
       console.error('Error signing up:', error);
-      toast.error("Error: Try again")
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("An unknown error occurred. Try again");
+      }
     } finally {
       setIsLoading(false);
     }
@@ -74,8 +78,6 @@ function SignUp() {
                 <option value={ROLES.PATIENT}>Patient</option>
                 <option value={ROLES.DOCTOR}>Doctor</option>
             </select>
-
-              {/* <input type="submit" value="Sign Up" className="btn solid" /> */}
               <button type='submit' className="btn solid">
                 {isLoading? <SpinnerMini /> : "Sign Up"}
               </button>

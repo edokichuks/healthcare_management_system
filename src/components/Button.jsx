@@ -9,9 +9,9 @@ const sizes = {
     text-align: center;
   `,
   medium: css`
-    font-size: 1.4rem;
-    padding: 1.2rem 1.6rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 1rem 1.2rem;
+    font-weight: 400;
   `,
   large: css`
     font-size: 1.6rem;
@@ -50,7 +50,7 @@ const variations = {
 
 const Button = styled.button`
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: 5px;
   box-shadow: var(--shadow-sm);
 
   ${(props) => sizes[props.size]}
