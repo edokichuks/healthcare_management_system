@@ -2,23 +2,11 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } f
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { auth, db } from "../firestore/firebase";
 
-// export const signUp = async (email: string, password: string, role: string): Promise<User> => {
-//     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-//     const user = userCredential.user;
-//     await setDoc(doc(db, 'users', user.uid), { email, role });
-//     return user;
-//   };
-  
-//   export const signIn = async (email: string, password: string): Promise<User> => {
-//     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-//     return userCredential.user;
-//   };
 
   export const signUp = async (email: string, password: string, role: string, userName: string): Promise<any> => {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
     if (role==="doctor") {
-    // await setDoc(doc(db, 'users', user.uid), { email, role });
 
     const profile = {
       email: email,
@@ -55,7 +43,6 @@ import { auth, db } from "../firestore/firebase";
     }
 
     if (role==="patient") {
-      // await setDoc(doc(db, 'users', user.uid), { email, role });
   
       const profile = {
         email: email,
@@ -94,9 +81,7 @@ import { auth, db } from "../firestore/firebase";
   };
   
   export const getUserRole = async (uid: string): Promise<string | null | undefined> => {
-    // const userDoc = await getDoc(doc(db, 'users', uid));
-    // let status = "patients" || "doctors";
-    // const userDoc = await getDoc(doc(db, 'users', uid));
+
     const userDoc = await getDoc(doc(db, 'doctors', uid, 'profile', uid));
     const userPat = await getDoc(doc(db, 'patients', uid, 'profile', uid));
     console.log(userDoc.data(), "fish");
@@ -105,14 +90,10 @@ import { auth, db } from "../firestore/firebase";
     if (userPat.exists()) return userPat.data().role;
 
     console.log("get user")
-
-    // console.log(userDoc.data().role || userPat.data().role || "ewww");
   }; 
 
   export const getUserName = async (uid: string): Promise<string | null | undefined> => {
-    // const userDoc = await getDoc(doc(db, 'users', uid));
-    // let status = "patients" || "doctors";
-    // const userDoc = await getDoc(doc(db, 'users', uid));
+
     const userDoc = await getDoc(doc(db, 'doctors', uid, 'profile', uid));
     const userPat = await getDoc(doc(db, 'patients', uid, 'profile', uid));
     console.log(userDoc.data(), "fish");
@@ -133,8 +114,8 @@ import { auth, db } from "../firestore/firebase";
     const uid = formData.docId;
     await updateDoc(doc(db, 'doctors', uid, 'work', uid, 'schedule', uid), formData);
     await updateDoc(doc(db, 'doctorList', uid), {
+      booked: true,
       available: false,
-      booked: true
     })
 
     

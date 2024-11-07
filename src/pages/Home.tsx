@@ -22,7 +22,7 @@ export const Home: React.FC = () => {
 
   return (
   <div className={styles.cont}>
-      <div className={styles.cont__welcome}>Welcome, {userName || "Udeh"}</div>
+      <div className={styles.cont__welcome}>Welcome, {userName || ""}</div>
       <div className={styles.cont__data}>
           <div className={styles.cont__data__billing}>fghm</div>
           <div className={styles.cont__data__diagnosis}>vbnm</div>
