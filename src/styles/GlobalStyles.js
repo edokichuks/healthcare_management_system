@@ -75,8 +75,6 @@ const GlobalStyles = createGlobalStyle`
 // --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.3);
 // --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.4);
 
-// --image-grayscale: 10%;
-// --image-opacity: 90%;
 // }
 
 /* Indigo */
@@ -88,11 +86,6 @@ const GlobalStyles = createGlobalStyle`
 --color-brand-700: #4338ca;
 --color-brand-800: #3730a3;
 --color-brand-900: #312e81;
-
---border-radius-tiny: 3px;
---border-radius-sm: 5px;
---border-radius-md: 7px;
---border-radius-lg: 9px;
 }
 
 `

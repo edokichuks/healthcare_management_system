@@ -50,10 +50,11 @@ interface SymptomsProps {
   onCloseModal: () => void;
   docId: string;
   render: number;
+  doctorName: string;
   setRender: ()=> void;
 }
 
-function Symptoms({  disabled, onCloseModal, docId, setRender, render } : SymptomsProps) {
+function Symptoms({  disabled, onCloseModal, docId, setRender, render, doctorName } : SymptomsProps) {
   const { user, role } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -67,6 +68,7 @@ function Symptoms({  disabled, onCloseModal, docId, setRender, render } : Sympto
     render: render,
     docId: docId,
     patID: user?.uid,
+    doctorName: doctorName,
     timeStamp: new Date()
     // timeStamp: serverTimestamp(),
   });

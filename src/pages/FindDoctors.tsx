@@ -29,21 +29,6 @@ const FindDoctors = () => {
   const [render, setRender] = useState(1);
   const { user: currentUser } = useAuth(); // Current patient
 
-  // useEffect(() => {
-  //   const fetchDoctors = async () => {
-  //     const db = getFirestore();
-  //     const doctorCollection = collection(db, 'doctors');
-  //     const doctorSnapshot = await getDocs(doctorCollection);
-  //     const doctorList = doctorSnapshot.docs.map(doc => ({
-  //       id: doc.id,
-  //       ...doc.data()
-  //     }));
-  //     setDoctors(doctorList);
-  //   };
-
-  //   fetchDoctors();
-  // }, []);
-
 
   useEffect(() => {
     const fetchDoctors = async () => {
@@ -67,15 +52,6 @@ const FindDoctors = () => {
             ...doc.data() // Spread the profile data
           };
         });
-
-        // const doctorsList = querySnapshot.forEach((doc) => {
-        //   console.log(doc.id, " => ", doc.data());
-        //   return {
-        //         uid: doc.id, // This is the doctor's uid
-        //         ...doc.data() // Spread the profile data
-        //       };
-        // });
-        
         console.log('List of doctors:', doctorsList);
         setDoctors(doctorsList)
         return doctorsList;
@@ -103,22 +79,6 @@ async function handlePickDoctor(formData: any) {
 
   return (
     <div className={styles.cont}>
-      {/* <h1>Patient Dashboard</h1>
-      <h2>Select Your Doctor:</h2>
-      <select value={selectedDoctor} onChange={e => setSelectedDoctor(e.target.value)}>
-        {doctors.map(doctor => (
-          <option key={doctor.uid} value={doctor.email}>
-            {doctor.email}
-          </option>
-        ))}
-      </select>
-      <button onClick={handleSelectDoctor}>Select Doctor</button>
-
-      {doctors.map((doctor: any)=>
-      <p onClick={()=>handlePickDoctor(doctor.uid)}>
-        {doctor.email}
-      </p>)} */}
-
       <div>
      { doctors.length>0 && <Table>
         <TableCaption>See available doctors</TableCaption>
@@ -145,6 +105,7 @@ async function handlePickDoctor(formData: any) {
           </Modal.Open>
           <Modal.Window name="delete">
             <Symptoms resourceName="Input your symptoms"
+            doctorName={doctor.userName}
             // onConfirm={handlePickDoctor}
             docId={doctor.uid}
             setRender={setRender}

@@ -2,7 +2,7 @@
 
 .cont {
     // margin: toRem(60);
-    overflow-y: scroll;
+    overflow-y: hidden;
     @include flex_col(toRem(50));
     justify-content: center;
     align-items: center;
@@ -26,14 +26,18 @@
 
     &__billing {
         background-color: #FFFFFF;
-        width: toRem(600);
+        width: toRem(360);
         height: toRem(300);
         border-radius: toRem(10);
+        @include flex_col(0px);
+        align-items: center;
+        justify-content: center;
+        padding: 0 toRem(10);
     }
 
     &__diagnosis {
         background-color: #FFFFFF;
-        width: toRem(260);
+        width: toRem(500);
         height: toRem(300);
         border-radius: toRem(10);
     }

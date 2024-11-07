@@ -28,11 +28,11 @@ export default function Prescription() {
     }, [prescription]);
     return (
         <div>
-            <p>From Dr. Apple</p>
+            <p>From Dr. {prescription?.doctorName}</p>
             <div>You have/had {prescription?.symptoms}</div>
             <div>Analysis indicates you are suffering from {prescription?.illness}</div>
             <div>Prescription: {prescription?.prescribe}</div>
-            <div>Your bill is $100</div>
+            <div>Your bill is ${prescription?.price}</div>
         </div>
 )
 }
