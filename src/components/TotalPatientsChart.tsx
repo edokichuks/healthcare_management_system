@@ -39,7 +39,7 @@ const TotalPatientChart = () => {
         // Convert weekly visits object to an array for Recharts
         const formattedData = Object.keys(weeklyVisits).map((weekStart) => ({
           week: weekStart,
-          visits: weeklyVisits[weekStart],
+          patients: weeklyVisits[weekStart],
         }));
 
         setWeeklyVisitsData(formattedData);
@@ -67,7 +67,7 @@ const TotalPatientChart = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="visits" fill="#82ca9d" barSize={60} /> {/* Adjust barSize to control width */}
+                <Bar dataKey="patients" fill="#82ca9d" barSize={60} /> {/* Adjust barSize to control width */}
             </BarChart>
         </ResponsiveContainer>
     </>
