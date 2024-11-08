@@ -14,7 +14,7 @@ const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 export default function PatientChart() {
   const [ageGroupData, setAgeGroupData] = useState<any>([]);
-  const [load, setLoad] = useState<any>(true);
+ const [load, setLoad] = useState<any>(false);
 
   useEffect(() => {
     const fetchAgeGroups = async () => {
@@ -82,14 +82,14 @@ export default function PatientChart() {
     // </PieChart>
     <>
       <Heading as="h2">Age of patients</Heading>
-      <ResponsiveContainer width="100%" height={180}>
+      <ResponsiveContainer width="100%" height={240}>
         <PieChart>
           <Pie 
             data={ageGroupData}
             nameKey="duration"
             dataKey="value"
-            innerRadius={55}
-            outerRadius={80}
+            innerRadius={65}
+            outerRadius={100}
             cx="50%"
             cy="50%"
             paddingAngle={3}

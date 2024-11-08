@@ -15,7 +15,7 @@
     background-color: #FFFFFF;
     border-radius: toRem(10);
     font-family: $comfortaa;
-    font-size: toRem(24);
+    font-size: toRem(34);
     color: $base;
     font-weight: 800;
    }
@@ -40,6 +40,10 @@
         width: toRem(500);
         height: toRem(300);
         border-radius: toRem(10);
+        @include flex_col(0px);
+        align-items: center;
+        justify-content: center;
+        padding: 0 toRem(10);
     }
    }
 }
