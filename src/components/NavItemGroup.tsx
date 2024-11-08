@@ -29,7 +29,7 @@ const NavItemGroup = ({ icon, text, toRoute }: NavItemGroupProps) => {
       className={`${isActive? styles.boxDark : styles.boxLight}`}
       onClick={handleNavClick}
     >
-      <div className={`${isActive? styles.boxDark__inner : styles.boxDark__inner}`}>
+      <div className={`${isActive? styles.boxDark__inner : styles.boxLight__inner}`}>
         <div className={`${isActive? styles.boxDark__inner__image: styles.boxLight__inner__image}`}>
             {icon}
         </div>

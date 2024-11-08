@@ -5,6 +5,7 @@ import { getSelectDoctor } from "@/services/useAuth";
 import toast from "react-hot-toast";
 import { useAuth } from "@/hooks/useAuth";
 import SpinnerMini from "./SpinnerMini";
+import { serverTimestamp } from "firebase/firestore";
 
 const StyledConfirmDelete = styled.div`
   width: 30rem;
@@ -49,10 +50,11 @@ interface SymptomsProps {
   onCloseModal: () => void;
   docId: string;
   render: number;
+  doctorName: string;
   setRender: ()=> void;
 }
 
-function Symptoms({  disabled, onCloseModal, docId, setRender, render } : SymptomsProps) {
+function Symptoms({  disabled, onCloseModal, docId, setRender, render, doctorName } : SymptomsProps) {
   const { user, role } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -65,7 +67,10 @@ function Symptoms({  disabled, onCloseModal, docId, setRender, render } : Sympto
     symptoms: "",
     render: render,
     docId: docId,
-    patID: user?.uid
+    patID: user?.uid,
+    doctorName: doctorName,
+    timeStamp: new Date()
+    // timeStamp: serverTimestamp(),
   });
 
   async function handlePickDoctor(formData: any) {
@@ -74,12 +79,13 @@ function Symptoms({  disabled, onCloseModal, docId, setRender, render } : Sympto
       await getSelectDoctor(formData);
       setRender((render)=>render+1);
       console.log(formData);
-      toast.success("Session booked successfully")
+      toast.success("Session booked successfully");
 
-    } catch {
-      toast.error("Network error");
+    } catch(err) {
+      // toast.error(err);
+      alert(err)
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
       onCloseModal();
     }
     
